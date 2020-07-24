@@ -21,6 +21,9 @@ public class HRStaffPage {
     @FindBy (how = How.XPATH, using = "//button[contains(text(),'New Hire')]")
     public static WebElement newHireButton;
 
+    @FindBy (how = How.XPATH, using = "//input[@placeholder='Search by Name']")
+    public static WebElement newHireTitle;
+
     @FindBy (how = How.XPATH, using = "//select[@xpath='1']')]")
     public static WebElement salutationDropDown;
 
