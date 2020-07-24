@@ -10,7 +10,6 @@ public class HRStaffStepDef {
     public void iAmOnTheStaffPage() {
         String expectedURL= "https://hr-testing.buffsci.org/home";
 
-
     }
 
     @When("I click on NewHire button")
@@ -33,5 +32,9 @@ public class HRStaffStepDef {
 
     @Then("I validate the newHire")
     public void iValidateTheNewHire() {
+    }
+
+    @Given("As an Admin I am on the StaffPage")
+    public void asAnAdminIAmOnTheStaffPage() {
     }
 }
