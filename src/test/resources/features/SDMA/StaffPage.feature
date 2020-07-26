@@ -6,6 +6,6 @@ Feature:SDMA-3 verify New Hire
     Then  I login as Admin
     When  I click on NewHire button
     Then  NewHire module will be visible
-    When  I enter valid data on the NewHireModule
+    Then  I fill new Hire form
     Then  I click the save button
     Then  I validate the newHire

@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+import java.util.List;
+
 public class HRStaffPage {
 
     @FindBy(how = How.XPATH, using = "//div[@class='links']/a")
@@ -21,22 +23,22 @@ public class HRStaffPage {
     @FindBy (how = How.XPATH, using = "//button[contains(text(),'New Hire')]")
     public static WebElement newHireButton;
 
-    @FindBy (how = How.XPATH, using = "//input[@placeholder='Search by Name']")
-    public static WebElement newHireTitle;
+    @FindBy (how = How.XPATH, using = "//h5[contains(text(),'New Hire')]")
+    public static WebElement newHireHeaderText;
 
     @FindBy (how = How.XPATH, using = "//select[@xpath='1']')]")
     public static WebElement salutationDropDown;
 
-    @FindBy (how = How.XPATH, using = "//label[text()='First Name:']")
+    @FindBy (how = How.XPATH, using = "//div[@class='col-sm-4']//input[@class='form-control']")
     public static WebElement newHireFirstName;
 
-    @FindBy (how = How.XPATH, using = "//label[text()='Middle Name:']")
+    @FindBy (how = How.XPATH, using = "//label[text()='Middle Name:']//following-sibling::input")
     public static WebElement newHireMiddleName;
 
-    @FindBy (how = How.XPATH, using = "//label[text()='Last Name:']")
+    @FindBy (how = How.XPATH, using = "//label[text()='Last Name:']//following-sibling::input")
     public static WebElement newHireLastName;
 
-    @FindBy (how = How.XPATH, using = "//label[text()='Vacant Positions:']")
+    @FindBy (how = How.XPATH, using = "")
     public static WebElement newHireVacantPositions;
 
     @FindBy (how = How.XPATH, using = "//input[@xpath='1']")
@@ -53,6 +55,15 @@ public class HRStaffPage {
 
     @FindBy (how = How.XPATH, using = "//button[@class='btn btn-primary'] ")
     public static WebElement newHireSave;
+
+    @FindBy (how = How.XPATH, using = "//a[@class='navbar-brand']")
+    public static WebElement buffSciButton;
+
+    @FindBy(how = How.XPATH, using = "//div[@class='card-body overflow-auto']/a")
+    public static List<WebElement> staffList;
+
+
+
 }
 
 

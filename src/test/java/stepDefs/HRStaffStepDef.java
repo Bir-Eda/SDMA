@@ -2,30 +2,29 @@ package stepDefs;
 import PageFactory.HRStaffPage;
 import Utilities.AutomationContext;
 import Utilities.WebElementMgr;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import com.github.javafaker.Faker;
+import com.github.javafaker.PhoneNumber;
+import io.cucumber.java.en.*;
 import managers.Driver;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+
+
+
+import java.util.Map;
 
 public class HRStaffStepDef {
     AutomationContext context;
     WebDriver driver;
 
+
+
+
     public HRStaffStepDef(AutomationContext context){
         this.context = context;
     }
 
-    //@Given("I am on the HRStaffPage")
-    //public void i_am_on_the_HRStaffPage() {
-      //  String actualURL = Driver.getDriver().getCurrentUrl();
-        //String expectedURL= "https://hr-testing.buffsci.org/home";
-        //Assert.assertEquals("I am on  the HRStaffPage",expectedURL,actualURL);
 
-    //}
     @Then("I login as Admin")
     public void i_login_as_Admin() throws Exception {
         WebElement loadLogin = (WebElement) WebElementMgr.getWebElement(context.getPageObjectMgr().getCurrentPage(), "loadLogin");
@@ -64,12 +63,7 @@ public class HRStaffStepDef {
 
     @Then("NewHire module will be visible")
     public void newHire_module_will_be_visible() {
-         String actualTitle= HRStaffPage.newHireTitle.getText();
-         String expectedTitle = "New Hire";
-         Assert.assertEquals("I am on the New Hire module",expectedTitle,actualTitle);
-    }
-    @Then("I validate the newHire")
-    public void iValidateTheNewHire() {
+        Assert.assertEquals("I am on the New Hire Module",HRStaffPage.newHireHeaderText.getText(), "New Hire");
     }
 
     @Then("I add NewHire's information")
@@ -78,19 +72,42 @@ public class HRStaffStepDef {
     }
     @Then("I click the save button")
     public void iClickTheSaveButton() {
+        HRStaffPage.newHireSave.click();
     }
 
     @Given("As an Admin I am on the StaffPage")
     public void asAnAdminIAmOnTheStaffPage() {
     }
 
-
-
     @When("I enter valid data on the NewHireModule")
     public void i_enter_valid_data_on_the_NewHireModule() {
     }
 
+    @Then("^I fill new Hire form$")
+    public void iFillnewHireform() throws InterruptedException {
+        Faker newUser = new Faker();
+        String firstName = newUser.name().firstName();
+        String middleName= newUser.name().nameWithMiddle();
+        String lastName = newUser.name().lastName();
+        PhoneNumber phoneNumber = newUser.phoneNumber();
+        String email= newUser.letterify(firstName);
 
+        HRStaffPage.newHireFirstName.sendKeys(firstName);
+        Thread.sleep(5000);
+        HRStaffPage.newHireMiddleName.sendKeys(middleName);
+        Thread.sleep(5000);
+        HRStaffPage.newHireLastName.sendKeys(lastName);
+        Thread.sleep(5000);
+        HRStaffPage.newHireCellPhone.sendKeys("phoneNumber");
+        Thread.sleep(5000);
+        HRStaffPage.newHirePersonalEmail.sendKeys(email);
+        Thread.sleep(5000);
 
+    }
+    @Then("I validate the newHire")
+    public void i_validate_the_newHire() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
 
 }
