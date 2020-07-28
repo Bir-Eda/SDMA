@@ -1,3 +1,7 @@
+/**
+*This class includes test to ensure Staff page work as expected
+*/
+
 Feature:SDMA-3 verify New Hire
 @Esra @Sprint1 @regression
   Scenario:I validate new hire button and validate function of the information request oxes in the new hire ta

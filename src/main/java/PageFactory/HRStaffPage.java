@@ -6,6 +6,9 @@ import org.openqa.selenium.support.How;
 
 import java.util.List;
 
+/**
+ *This class includes locators of the all Web Elements in the Staff page
+ */
 public class HRStaffPage {
 
     @FindBy(how = How.XPATH, using = "//div[@class='links']/a")
