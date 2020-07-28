@@ -1,0 +1,105 @@
+Index: src/test/java/stepDefs/HRStaffStepDef.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/test/java/stepDefs/HRStaffStepDef.java	(revision Local Version)
++++ src/test/java/stepDefs/HRStaffStepDef.java	(revision Shelved Version)
+@@ -8,23 +8,17 @@
+ import managers.Driver;
+ import org.junit.Assert;
+ import org.openqa.selenium.*;
+-
+-
+-
+-import java.util.Map;
++import org.openqa.selenium.support.ui.Select;
+ 
+ public class HRStaffStepDef {
+     AutomationContext context;
+     WebDriver driver;
+ 
+ 
+-
+-
+     public HRStaffStepDef(AutomationContext context){
+         this.context = context;
+     }
+ 
+-
+     @Then("I login as Admin")
+     public void i_login_as_Admin() throws Exception {
+         WebElement loadLogin = (WebElement) WebElementMgr.getWebElement(context.getPageObjectMgr().getCurrentPage(), "loadLogin");
+@@ -65,48 +59,51 @@
+         Assert.assertEquals("I am on the New Hire Module",HRStaffPage.newHireHeaderText.getText(), "New Hire");
+     }
+ 
+-    @Then("I add NewHire's information")
+-    public void iAddNewHireSInformation() {
+-
+-    }
+     @Then("I click the save button")
+-    public void iClickTheSaveButton() {
++    public void iClickTheSaveButton() throws InterruptedException {
+         HRStaffPage.newHireSave.click();
++        Thread.sleep(1000);
+     }
+ 
+     @Given("As an Admin I am on the StaffPage")
+     public void asAnAdminIAmOnTheStaffPage() {
+     }
+ 
+-    @When("I enter valid data on the NewHireModule")
+-    public void i_enter_valid_data_on_the_NewHireModule() {
+-    }
+-
+-    @Then("^I fill new Hire form$")
+-    public void iFillnewHireform() throws InterruptedException {
++    @Then("^I fill new Hire Form$")
++    public void iFillNewHireForm() throws InterruptedException {
+         Faker newUser = new Faker();
++
++        Select select = new Select(HRStaffPage.salutationDropDown);
++        select.selectByIndex(1);
++
+         String firstName = newUser.name().firstName();
+-        String middleName= newUser.name().nameWithMiddle();
++        String middleName= newUser.name().name();
+         String lastName = newUser.name().lastName();
++        Select jobSelect = new Select(HRStaffPage.newHireVacantPositions);
++        jobSelect.selectByIndex(2);
+         PhoneNumber phoneNumber = newUser.phoneNumber();
+-        String email= newUser.letterify(firstName);
++        String email= (newUser.name().firstName())+"@gmail.com";
+ 
+         HRStaffPage.newHireFirstName.sendKeys(firstName);
+-        Thread.sleep(5000);
++        Thread.sleep(3000);
+         HRStaffPage.newHireMiddleName.sendKeys(middleName);
+-        Thread.sleep(5000);
++        Thread.sleep(3000);
+         HRStaffPage.newHireLastName.sendKeys(lastName);
+-        Thread.sleep(5000);
+-        HRStaffPage.newHireCellPhone.sendKeys("phoneNumber");
+-        Thread.sleep(5000);
++        Thread.sleep(3000);
++        HRStaffPage.newHireCellPhone.sendKeys("1234567890");
++        Thread.sleep(3000);
+         HRStaffPage.newHirePersonalEmail.sendKeys(email);
++        Thread.sleep(3000);
++        HRStaffPage.newHireChooseFile.sendKeys("//Users//abdullahibin//Desktop//Person.jpeg");
+         Thread.sleep(5000);
+ 
+     }
+     @Then("I validate the newHire")
+-    public void i_validate_the_newHire() {
+-        // Write code here that turns the phrase above into concrete actions
+-        throw new io.cucumber.java.PendingException();
++    public void i_validate_the_newHire() throws InterruptedException {
++        //WebElement saveStatus = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.className("toast-message")));
++        Thread.sleep(1000);
++        Assert.assertEquals("Saving new hire is Successful","New staff is registered",HRStaffPage.savingStatNewHire.getText());
++
+     }
+ 
+ }
