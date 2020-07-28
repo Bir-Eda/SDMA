@@ -26,7 +26,7 @@ public class HRStaffPage {
     @FindBy (how = How.XPATH, using = "//h5[contains(text(),'New Hire')]")
     public static WebElement newHireHeaderText;
 
-    @FindBy (how = How.XPATH, using = "//select[@xpath='1']')]")
+    @FindBy (how = How.XPATH, using = "//*[@id=\"newHireForm\"]/div/div[1]/select")
     public static WebElement salutationDropDown;
 
     @FindBy (how = How.XPATH, using = "//div[@class='col-sm-4']//input[@class='form-control']")
@@ -38,13 +38,13 @@ public class HRStaffPage {
     @FindBy (how = How.XPATH, using = "//label[text()='Last Name:']//following-sibling::input")
     public static WebElement newHireLastName;
 
-    @FindBy (how = How.XPATH, using = "")
+    @FindBy (how = How.XPATH, using = "//div[@class='form-group col-sm-6']//select[@class='form-control']")
     public static WebElement newHireVacantPositions;
 
-    @FindBy (how = How.XPATH, using = "//input[@xpath='1']")
+    @FindBy (how = How.XPATH, using = "//*[@id='newHireForm']/div/div[7]/div/input")
     public static WebElement newHirePersonalEmail;
 
-    @FindBy (how = How.XPATH, using = "(//label[text()='Cell Phone:'])[position()=2]")
+    @FindBy (how = How.XPATH, using = "//*[@id='newHireForm']/div/div[8]/div/input")
     public static WebElement newHireCellPhone;
 
     @FindBy (how = How.XPATH, using = "(//input[@type='file'])[position()=1]")
@@ -55,6 +55,9 @@ public class HRStaffPage {
 
     @FindBy (how = How.XPATH, using = "//button[@class='btn btn-primary'] ")
     public static WebElement newHireSave;
+
+    @FindBy (how = How.CLASS_NAME, using = "toast-message")
+    public static WebElement savingStatNewHire;
 
     @FindBy (how = How.XPATH, using = "//a[@class='navbar-brand']")
     public static WebElement buffSciButton;
