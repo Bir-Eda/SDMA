@@ -1,6 +1,6 @@
-/**
-*This class includes test to ensure Staff page work as expected
-*/
+#/**
+#*This class includes test to ensure Staff page work as expected
+#*/
 
 Feature:SDMA-3 verify New Hire
 @Esra @Sprint1 @regression

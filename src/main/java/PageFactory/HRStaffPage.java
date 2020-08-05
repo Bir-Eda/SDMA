@@ -69,10 +69,4 @@ public class HRStaffPage {
     public static List<WebElement> staffList;
 
 
-
 }
-
-
-
-
-
