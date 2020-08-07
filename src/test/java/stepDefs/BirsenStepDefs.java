@@ -6,6 +6,7 @@ import Utilities.WebElementMgr;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,6 +42,9 @@ public class BirsenStepDefs{
             Select titles = new Select(HRStaffPage.salutationDropDown);
             titles.selectByVisibleText("Mr.");
 
+//            Select titlesList=new Select((WebElement) HRStaffPage.salutationDropDownList);
+//            titlesList.selectByVisibleText("Dr.");
+
             Select vacant = new Select(HRStaffPage.newHireVacantPositions);
             vacant.selectByIndex(2);
 
@@ -57,10 +61,8 @@ public class BirsenStepDefs{
 
             String email = firstNm +"@gmail.com";
             HRStaffPage.newHirePersonalEmail.sendKeys(email);
-
             Thread.sleep(2000);
             HRStaffPage.newHireCellPhone.sendKeys("1234567890");
-
             Thread.sleep(2000);
             HRStaffPage.newHireChooseFile.sendKeys("//Users//Eda//Desktop//Lamb.png");
             Thread.sleep(2000);
@@ -141,6 +143,7 @@ public class BirsenStepDefs{
             WebElement uploadPic = (WebElement) WebElementMgr.getWebElement(context.getPageObjectMgr().getCurrentPage(), pic);
             uploadPic.sendKeys(picLocation);
         }
+
 
         /**
          * Steps to validate the person registered new is on the list

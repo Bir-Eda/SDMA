@@ -28,7 +28,7 @@ public class YasinStepDef {
      *
      * @param elementNm
      */
-    @Then("^I validate the (\\w+) with below")
+    @Then("^I validate the (\\w+) with below$")
     public void I_validate_the_drop_down_list(String elementNm, List<String> expectedInList) throws Exception {
         List<WebElement> actualList = (List<WebElement>) WebElementMgr.getWebElement(context.getPageObjectMgr().getCurrentPage(), elementNm);
         String expectedValue;

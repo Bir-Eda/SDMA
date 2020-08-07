@@ -29,8 +29,11 @@ public class HRStaffPage {
     @FindBy (how = How.XPATH, using = "//h5[contains(text(),'New Hire')]")
     public static WebElement newHireHeaderText;
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"newHireForm\"]/div/div[1]/select")
+    @FindBy (how = How.XPATH, using = "//*[@id='newHireForm']/div/div[1]/select")
     public static WebElement salutationDropDown;
+
+    @FindBy (how = How.XPATH, using = "//*[@id='newHireForm']/div/div[1]/select/option")
+    public static List<WebElement> salutationDropDownList;
 
     @FindBy (how = How.XPATH, using = "//div[@class='col-sm-4']//input[@class='form-control']")
     public static WebElement newHireFirstName;
