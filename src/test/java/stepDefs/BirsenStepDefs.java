@@ -8,6 +8,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -29,7 +30,7 @@ public class BirsenStepDefs{
             this.context = context;
         }
 
-        Faker f;
+        Faker faker;
         String newEmployee;
 
         /**
@@ -37,30 +38,41 @@ public class BirsenStepDefs{
          */
         @Then("^I fill new employee's information on NewHire window$")
         public void i_fill_new_employees_information_on_newhire_window() throws IOException, InterruptedException {
-            f = new Faker();
+            faker = new Faker();
 
             Select titles = new Select(HRStaffPage.salutationDropDown);
             titles.selectByVisibleText("Mr.");
 
-//            Select titlesList=new Select((WebElement) HRStaffPage.salutationDropDownList);
-//            titlesList.selectByVisibleText("Dr.");
 
             Select vacant = new Select(HRStaffPage.newHireVacantPositions);
             vacant.selectByIndex(2);
 
-            String firstNm = f.name().firstName();
+            Select terminationOptions = new Select((WebElement) HRStaffPage.terminationReason);
+            terminationOptions.selectByIndex(2);
+
+            Select jobOptions = new Select((WebElement) HRStaffPage.jobBox);
+            jobOptions.selectByIndex(7);
+
+            Select searchName = new Select((WebElement) HRStaffPage.newWorkersList);
+            searchName.selectByIndex(13);
+
+            String firstNm = faker.name().firstName();
             HRStaffPage.newHireFirstName.sendKeys(firstNm);
 
-            String midNm = f.name().nameWithMiddle();
+            String midNm = faker.name().nameWithMiddle();
             HRStaffPage.newHireMiddleName.sendKeys(midNm);
 
-            String lastNm = f.name().lastName();
+            String lastNm = faker.name().lastName();
             HRStaffPage.newHireLastName.sendKeys(lastNm);
+
 
             newEmployee = firstNm+" "+midNm.charAt(0)+". "+lastNm;
 
             String email = firstNm +"@gmail.com";
             HRStaffPage.newHirePersonalEmail.sendKeys(email);
+            Thread.sleep(2000);
+
+            HRStaffPage.inputBox.sendKeys("Ezgi M. Sari");
             Thread.sleep(2000);
             HRStaffPage.newHireCellPhone.sendKeys("1234567890");
             Thread.sleep(2000);
@@ -70,12 +82,20 @@ public class BirsenStepDefs{
 
 
         }
+    @Then("^I click on (\\d+). option$")
+    public void i_click_on_8_option(){
+
+       //     driver.switchTo().activeElement().sendKeys(Key.TAB)
+
+    }
 
         @Then("^I validate that new employee is in the staff list$")
         public void i_validate_that_new_employee_is_in_the_staff_list() throws Exception {
             System.out.println(newEmployee);
             ArrayList<String> employees = new ArrayList<>();
+
             //steps for storing all staff names into an empty arraylist
+
             String employeeName = "";
             for(WebElement member: HRStaffPage.staffList){
                 employeeName = member.getText();
@@ -114,6 +134,7 @@ public class BirsenStepDefs{
             } catch (Exception e) {
                 context.getScenarioManager().getScenario().write("Unable to Select " + selectionVal + " from " + elementNm + " " + type + "; Error encountered:" + e.getMessage());
             }
+    //        driver.switchTo().activeElement().sendKeys(Keys.TAB);
         }
 
         /**
