@@ -26,7 +26,7 @@ public class ValidationStepDefs {
         this.context = context;
     }
 
-    @Then("^I validate (\\w+) is displayed")
+    @Then("^I validate (\\w+) is displayed$")
     public void i_validate_displayed(String elementNm) throws Exception {
         WebElement displayElement = (WebElement) WebElementMgr.getWebElement(context.getPageObjectMgr().getCurrentPage(), elementNm);
         if (!displayElement.isDisplayed()) {
@@ -103,7 +103,7 @@ public class ValidationStepDefs {
      * @param hoverEle
      * @param expText
      */
-    @Then("^I hover on (\\w+) and then validate text for (\\w+) to match with \"(.*)\"")
+    @Then("^I hover on (\\w+) and then validate text for (\\w+) to match with \"(.*)\"$")
     public void i_hover_get_text(String elementNm, String hoverEle, String expText) throws Exception {
         WebElement mainElement = (WebElement) WebElementMgr.getWebElement(context.getPageObjectMgr().getCurrentPage(), elementNm);
         WebElement hovElement = (WebElement) WebElementMgr.getWebElement(context.getPageObjectMgr().getCurrentPage(), hoverEle);

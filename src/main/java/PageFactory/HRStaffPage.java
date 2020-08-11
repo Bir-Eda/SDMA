@@ -23,14 +23,20 @@ public class HRStaffPage {
     @FindBy (how = How.XPATH, using = "//button[@type='submit']")
     public static WebElement loginButton;
 
+    @FindBy (how = How.XPATH, using = "//*[@class='navbar-brand']")
+    public static WebElement buffSciMain;
+
     @FindBy (how = How.XPATH, using = "//button[contains(text(),'New Hire')]")
     public static WebElement newHireButton;
 
     @FindBy (how = How.XPATH, using = "//h5[contains(text(),'New Hire')]")
     public static WebElement newHireHeaderText;
 
-    @FindBy (how = How.XPATH, using = "//*[@id=\"newHireForm\"]/div/div[1]/select")
+    @FindBy (how = How.XPATH, using = "//*[@id='newHireForm']/div/div[1]/select")
     public static WebElement salutationDropDown;
+
+    @FindBy (how = How.XPATH, using = "//*[@id='newHireForm']/div/div[1]/select/option")
+    public static List<WebElement> salutationDropDownList;
 
     @FindBy (how = How.XPATH, using = "//div[@class='col-sm-4']//input[@class='form-control']")
     public static WebElement newHireFirstName;
@@ -68,11 +74,114 @@ public class HRStaffPage {
     @FindBy(how = How.XPATH, using = "//div[@class='card-body overflow-auto']/a")
     public static List<WebElement> staffList;
 
+    @FindBy (how = How.CSS, using = "#v-pills-tab .card-body a")
+    public static WebElement newStaffName;  // Abraham F. Sencer
+
+    @FindBy (how = How.CSS, using = "//*[@placeholder='Search by Name']")
+    public static WebElement searchByName;
+
+    @FindBy(how = How.XPATH, using = "//div[@class='card-body overflow-auto']")
+    public static List<WebElement> newWorkersList;
+
+
+    @FindBy (how = How.CSS, using = "//*[contains(text(),'Edit Basic Info')]")
+    public static WebElement editBasicInfo;
+
+    @FindBy (how = How.CSS, using = "//*[@class='btn btn-primary']")
+    public static WebElement editBasicInfoSave;
+
+    @FindBy(how = How.XPATH, using = "//*[@placeholder='Search by Name']")
+    public static WebElement inputBox;
+
+    @FindBy(how = How.XPATH, using = "//*[@id='basic-tab']/div/div/div/div[8]/label")
+    public static WebElement emailInputBoxTag;
+
+
+
+
+//    Termination
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Termination')]")
+    public static WebElement termination;
+
+    @FindBy(how = How.XPATH, using = "//*[@class='modal-header']")
+    public static WebElement terminationPopUp;
+
+//    @FindBy(how = How.XPATH, using = "/html/body/div[2]/div[1]/div/div/header/button")
+//    public static WebElement terminationPopUpClose;
+
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='mm/dd/yyyy']")
+    public static WebElement terminationDate;
+
+    @FindBy(how = How.XPATH, using = "//*[@id='terminationForm']/div/div[2]/select")
+    public static WebElement terminationReason;
+
+    @FindBy(how = How.XPATH, using = "//*[@id='terminationForm']/div/div[2]/select/option")
+    public static List<WebElement> terminationReasonList;
+
+    @FindBy(how = How.XPATH, using = "//*[contains(text(),'Save')]")
+    public static WebElement terminationSave;
+
+    @FindBy(how = How.XPATH, using = "(//*[contains(text(),'Staff')])[position()=1]")
+    public static WebElement terminationStaff;
+
+    @FindBy(how = How.XPATH, using = "//*[@placeholder='Search by Name']")
+    public static WebElement terminationStaffSearchByName;
+
+    @FindBy(how = How.XPATH, using = "//a[@id='79939']")
+    public static WebElement terminationStaffName;
+
+    @FindBy(how = How.XPATH, using = "//div[@class='card-body overflow-auto']")
+    public static List<WebElement> terminationStaffSearchByNameList;
+
+
+//    Job Department
+
+    @FindBy(how = How.XPATH, using = "(//*[@class='form-control m-1'])[position()=1]")
+    public static WebElement jobBox;
+
+    @FindBy(how = How.XPATH, using = "(//*[@class='form-control m-1'])[position()=1]/option[1]")
+    public static List<WebElement> jobBoxDropDown;
+
+//    @FindBy(how = How.XPATH, using = "//*[@class='card-body overflow-auto']")
+//    public static List<WebElement> jobBoxList;
+
+
+    //BuffSciMenu @SDMA_1
+
+    @FindBy(how = How.XPATH, using = "(//*[contains(text(),'BuffSci')])[position()=3]")
+    public static WebElement homeBuffSci;
+
+    @FindBy(how = How.XPATH, using = "//*[@class='os-content']")
+    public static List<WebElement> allBuffSciMenu;
+
+    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=1]")
+    public static WebElement staffMenu;
+
+    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=2]")
+    public static WebElement applicantsMenu;
+
+    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=3]")
+    public static WebElement positionsMenu;
+
+    @FindBy(how = How.XPATH, using = "//*[@class='nav-item menu-open']/a/p")
+    public static WebElement positionTypeMenu;
+
+    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=4]")
+    public static WebElement permissionsMenu;
+
+    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=5]")
+    public static WebElement staffRollBackMenu;
+
+    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=6]")
+    public static WebElement snapShotMenu;
+
+   // @FindBy(how = How.XPATH, using = "")
+   // public static WebElement ;
+
+
+
+
+
 
 
 }
-
-
-
-
-
