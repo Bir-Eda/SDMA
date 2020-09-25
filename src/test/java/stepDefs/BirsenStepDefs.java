@@ -7,7 +7,9 @@ import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import managers.Driver;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,18 +45,14 @@ public class BirsenStepDefs{
             Select titles = new Select(HRStaffPage.salutationDropDown);
             titles.selectByVisibleText("Mr.");
 
+           // Select terminationOptions = new Select((WebElement) HRStaffPage.terminationReason);
+          //  terminationOptions.selectByIndex(2);
 
-            Select vacant = new Select(HRStaffPage.newHireVacantPositions);
-            vacant.selectByIndex(2);
+          //  Select jobOptions = new Select((WebElement) HRStaffPage.jobBox);
+          //  jobOptions.selectByIndex(7);
 
-            Select terminationOptions = new Select((WebElement) HRStaffPage.terminationReason);
-            terminationOptions.selectByIndex(2);
-
-            Select jobOptions = new Select((WebElement) HRStaffPage.jobBox);
-            jobOptions.selectByIndex(7);
-
-            Select searchName = new Select((WebElement) HRStaffPage.newWorkersList);
-            searchName.selectByIndex(13);
+          //  Select searchName = new Select((WebElement) HRStaffPage.newWorkersList);
+          //  searchName.selectByIndex(13);
 
             String firstNm = faker.name().firstName();
             HRStaffPage.newHireFirstName.sendKeys(firstNm);
@@ -65,6 +63,8 @@ public class BirsenStepDefs{
             String lastNm = faker.name().lastName();
             HRStaffPage.newHireLastName.sendKeys(lastNm);
 
+            Select vacant = new Select(HRStaffPage.newHireVacantPositions);
+            vacant.selectByIndex(2);
 
             newEmployee = firstNm+" "+midNm.charAt(0)+". "+lastNm;
 
@@ -72,11 +72,11 @@ public class BirsenStepDefs{
             HRStaffPage.newHirePersonalEmail.sendKeys(email);
             Thread.sleep(2000);
 
-            HRStaffPage.inputBox.sendKeys("Ezgi M. Sari");
-            Thread.sleep(2000);
+//            HRStaffPage.inputBox.sendKeys("Ezgi M. Sari");
+//            Thread.sleep(2000);
             HRStaffPage.newHireCellPhone.sendKeys("1234567890");
             Thread.sleep(2000);
-            HRStaffPage.newHireChooseFile.sendKeys("//Users//Eda//Desktop//Lamb.png");
+            HRStaffPage.newHireChooseFile.sendKeys("//Users//Eda//Desktop//SDM_10.png");
             Thread.sleep(2000);
             HRStaffPage.newHireSave.click();
 
@@ -202,6 +202,36 @@ public class BirsenStepDefs{
             }
 
         }
+    @Then("^I validate all sections are present$")
+    public void i_validate_all_sections_are_present(List<String> sections) throws Exception {
+        WebElement fileUpload = (WebElement) WebElementMgr.getWebElement(context.getPageObjectMgr().getCurrentPage(), "fileUpload");
+        int count = 1;
+        int listCount = 0;
+        String label = "";
+        boolean fail = false;
+        while (count < sections.size() + 1) {
+            if (count != 2) {
+                label = Driver.getDriver().findElement(By.xpath("//*[@id='newHireForm']/div/div[" + count + "]/label")).getAttribute("innerHTML");
+                if (sections.get(listCount).equals(label)) {
+                    context.getScenarioManager().getScenario().write(sections.get(listCount) + " section is present");
+                } else {
+                    context.getScenarioManager().getScenario().write(sections.get(listCount) + " section is not present");
+                    fail = true;
+                }
+                listCount++;
+            }
+            count++;
+        }
+        if (fileUpload.isEnabled()) {
+            context.getScenarioManager().getScenario().write(sections.get(listCount) + " section is present");
+        } else {
+            context.getScenarioManager().getScenario().write(sections.get(listCount) + " section is not present");
+            fail = true;
+        }
+        if (fail) {
+            throw new Exception("some sections are not present");
+        }
+    }
 
         }
 

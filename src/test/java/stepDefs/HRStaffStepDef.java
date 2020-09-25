@@ -101,7 +101,7 @@ public class HRStaffStepDef {
         Thread.sleep(2000);
         HRStaffPage.newHirePersonalEmail.sendKeys(email);
         Thread.sleep(2000);
-        HRStaffPage.newHireChooseFile.sendKeys("//Users//abdullahibin//Desktop//Person.jpeg");
+        HRStaffPage.newHireChooseFile.sendKeys("/Users/Eda/Bugstar/src/test/resources/testdata/Lamb.png");
         Thread.sleep(2000);
     }
 

@@ -1,6 +1,25 @@
 Feature: Birsen Tests
 
-  @NewHire  @SDMA_4  @Birsen
+  @NewHirePopUp  @SDMA_3  @Birsen
+  Scenario: I want to see New Hire Button on the BuffSci Home page
+    Given I am on the HRStaffPage page
+    When I login
+    Then I wait for 1000 milliseconds
+    Then I click on newHireButton
+    #Then I fill new Hire Form
+    Then I validate all sections are present
+      |Salutation: |
+      |First Name: |
+      |Middle Name:  |
+      |Last Name: |
+      |Vacant Positions: |
+      |Personal Email: |
+      |Cell Phones: |
+      |Choose file: |
+
+
+
+ # @NewHire  @SDMA_4  @Birsen
   Scenario: Fill ne worker`s information, save and validate it
     Given I am on the HRStaffPage page
     When I login
@@ -39,21 +58,22 @@ Feature: Birsen Tests
     Then I wait for 1000 milliseconds
     Then I enter "Ezgi M. Sari" in inputBox
     Then I wait for 1000 milliseconds
-    Then I enter "Anna Jenkins" in inputBox
+    Then I enter "Barry Clark" in inputBox
     Then I wait for 1000 milliseconds
-    Then I enter "Bill Rej" in inputBox
+    Then I enter "Alex Sandy" in inputBox
     Then I wait for 1000 milliseconds
-    Then I enter "Denise Wood" in inputBox
+    Then I enter "Brian Walker" in inputBox
     Then I wait for 1000 milliseconds
-    Then I enter "Jason Cook" in inputBox
+    Then I enter "Colin Jones" in inputBox
     Then I wait for 1000 milliseconds
-    Then I validate newStaffName Text is "Jason Cook"
+    Then I validate newStaffName Text is "Colin Jones"
     Then I wait for 1000 milliseconds
-    Then I enter "Sara King" in inputBox
+    Then I enter "Sara Williams" in inputBox
     Then I wait for 1000 milliseconds
 
 
-
+#  mvn clean test verify -Dcucumber.options="--tags @InputBox" -Dplatform=windows -DtestApp=web -Dbrowser=chrome -Dmaven=mvn -PSDMA -Dapplication=sdma
+#  mvn clean test verify -Dcucumber.options="--tags @NewHirePopUp" -Dplatform=windows -DtestApp=web -Dbrowser=chrome -Dmaven=mvn -PSDMA -Dapplication=sdma
 
 
 

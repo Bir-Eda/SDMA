@@ -77,17 +77,17 @@ public class HRStaffPage {
     @FindBy (how = How.CSS, using = "#v-pills-tab .card-body a")
     public static WebElement newStaffName;  // Abraham F. Sencer
 
-    @FindBy (how = How.CSS, using = "//*[@placeholder='Search by Name']")
+    @FindBy (how = How.XPATH, using = "//*[@placeholder='Search by Name']")
     public static WebElement searchByName;
 
     @FindBy(how = How.XPATH, using = "//div[@class='card-body overflow-auto']")
     public static List<WebElement> newWorkersList;
 
 
-    @FindBy (how = How.CSS, using = "//*[contains(text(),'Edit Basic Info')]")
+    @FindBy (how = How.XPATH, using = "//*[contains(text(),'Edit Basic Info')]")
     public static WebElement editBasicInfo;
 
-    @FindBy (how = How.CSS, using = "//*[@class='btn btn-primary']")
+    @FindBy (how = How.XPATH, using = "//*[@class='btn btn-primary']")
     public static WebElement editBasicInfoSave;
 
     @FindBy(how = How.XPATH, using = "//*[@placeholder='Search by Name']")
@@ -154,16 +154,23 @@ public class HRStaffPage {
     @FindBy(how = How.XPATH, using = "//*[@class='os-content']")
     public static List<WebElement> allBuffSciMenu;
 
-    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=1]")
+    @FindBy(how = How.XPATH, using = "//*[@class='nav-item menu-open']/a/p")
     public static WebElement staffMenu;
 
-    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=2]")
+    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=1]")
     public static WebElement applicantsMenu;
 
-    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=3]")
+    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=2]")
     public static WebElement positionsMenu;
 
-    @FindBy(how = How.XPATH, using = "//*[@class='nav-item menu-open']/a/p")
+  //  /html/body/div/aside/div/div[6]/div/div/nav/ul/li[3]/a/p
+
+    @FindBy(how = How.XPATH, using = "//*[@class='btn btn-primary float-sm-right text-white']")
+    public static WebElement addNewPositions;
+
+
+
+    @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=3]")
     public static WebElement positionTypeMenu;
 
     @FindBy(how = How.XPATH, using = "(//*[@class='nav-item']/a/p)[position()=4]")
