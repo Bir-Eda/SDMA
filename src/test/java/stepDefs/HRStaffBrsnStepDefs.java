@@ -23,12 +23,12 @@ import java.util.List;
  * @author Birsen
  */
 
-public class BirsenStepDefs{
+public class HRStaffBrsnStepDefs {
 
         WebDriver driver;
         AutomationContext context;
 
-        public BirsenStepDefs(AutomationContext context) {
+        public HRStaffBrsnStepDefs(AutomationContext context) {
             this.context = context;
         }
 
@@ -72,23 +72,28 @@ public class BirsenStepDefs{
             HRStaffPage.newHirePersonalEmail.sendKeys(email);
             Thread.sleep(2000);
 
-//            HRStaffPage.inputBox.sendKeys("Ezgi M. Sari");
-//            Thread.sleep(2000);
             HRStaffPage.newHireCellPhone.sendKeys("1234567890");
-            Thread.sleep(2000);
-            HRStaffPage.newHireChooseFile.sendKeys("//Users//Eda//Desktop//SDM_10.png");
+            Thread.sleep(3000);
+            HRStaffPage.newHireChooseFile.sendKeys("/Users/Eda/Bugstar/src/test/resources/testdata/Lamb.png");
             Thread.sleep(2000);
             HRStaffPage.newHireSave.click();
 
 
         }
+    /**
+     * Steps for click option
+     */
+
     @Then("^I click on (\\d+). option$")
     public void i_click_on_8_option(){
 
-       //     driver.switchTo().activeElement().sendKeys(Key.TAB)
+         //  driver.switchTo().activeElement().sendKeys(Key.TAB)
 
     }
 
+    /**
+     * Steps for validate new employee is in the staffList
+     */
         @Then("^I validate that new employee is in the staff list$")
         public void i_validate_that_new_employee_is_in_the_staff_list() throws Exception {
             System.out.println(newEmployee);
@@ -134,7 +139,7 @@ public class BirsenStepDefs{
             } catch (Exception e) {
                 context.getScenarioManager().getScenario().write("Unable to Select " + selectionVal + " from " + elementNm + " " + type + "; Error encountered:" + e.getMessage());
             }
-    //        driver.switchTo().activeElement().sendKeys(Keys.TAB);
+           // driver.switchTo().activeElement().sendKeys(Keys.TAB);
         }
 
         /**
@@ -165,7 +170,6 @@ public class BirsenStepDefs{
             uploadPic.sendKeys(picLocation);
         }
 
-
         /**
          * Steps to validate the person registered new is on the list
          * @param person
@@ -189,7 +193,6 @@ public class BirsenStepDefs{
 
                 if ( employees.contains(person)) {
                     Assert.assertTrue(employees.contains(person));
-
 
                 }
 
